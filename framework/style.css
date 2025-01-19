@@ -1,0 +1,39 @@
+body {
+    background-color: #ffffff;
+}
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+}
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 18px;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar a:hover {
+    background-color: #2e2e2e;
+}
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    background-color: white;
+    flex-grow: 1;
+}
+header {
+    background-color: rgb(0, 204, 204);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    text-align: center;
+}
