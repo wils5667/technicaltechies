@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <title>TT</title>
+   <style>
+       body {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           margin: 0;
+       }
+
+
+       .adjusted-text {
+           font-size: 24px;
+           color:black;
+           transform: translate(70px, -155px);
+
+       }
+       .adjusted-username {
+           font-size: 24px;
+           color: black;
+           transform: translate(-280px, -125px);
+       }
+
+
+       .adjusted-password {
+           font-size: 24px;
+           color:black;
+           transform: translate(-385px, -50px);
+       }
+
+       .form-container {
+           position: fixed;
+           left: -480px;
+           bottom: 30px;
+       }
+       .form-container input[type="text"]{
+           display: flex;
+           width: 250px;
+           padding: 10px;
+           margin-bottom: 40px;
+           border: 1px solid rgb(240, 239, 239);
+           border-radius: 5px;
+           fontsize: 14px
+       }
+       .button-container{
+           position: fixed;
+           left: -650px;
+           top: 50px;
+       }
+
+
+       .link-container{
+           position: fixed;
+           left: -815px;
+           top: 20px;
+       }
+
+
+       a {
+           color: #007bff;         
+           font-size: 18px;        
+       }
+
+
+
+
+
+
+   </style>
+</head>
+
+
+<body>
+
+
+   <div class="adjusted-text">
+       Login:
+   </div>
+   <div class="center-box"></div>
+   <div class="adjusted-username">
+       Username:
+   </div>
+   <div class="adjusted-password">
+       Password:
+   </div>
+<div class="form-container">
+   <label for="username"></label>
+   <input type="text" id="username" placeholder="username" required>
+
+
+   <label for="password"></label>
+   <input type="text" id="password" placeholder="password" required>
+</div>
+
+
+<div class="button-container">
+   <button>Submit</button>
+</div>
+<div class="link-container">
+   <a href="https://createanaccount.com"><span style="white-space: nowrap;">Create an Account</span></a>
+
+
+</div>
+
+
+</body>
+
+
+</main>
+</html>
+

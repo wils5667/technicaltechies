@@ -101,3 +101,22 @@ header button:hover {
     margin-bottom: 8px;
     color: #444;
 }
+
+
+
+
+
+
+/* Allisha */
+.center-box {
+    width: 325px;
+    height: 350px;
+    background-color:rgb(196, 195, 195);
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border-color: black;
+   
+}
