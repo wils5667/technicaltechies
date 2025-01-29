@@ -188,3 +188,15 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* Create An Account */
+/* Name Fields Layout */
+.name-fields {
+    display: flex;
+    gap: 10px;  
+}
+
+.input-group {
+    flex: 1;
+}
+
