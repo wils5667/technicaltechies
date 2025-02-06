@@ -1,6 +1,11 @@
 
 /* Allisha */
 /* Login Style */
+
+body, h2, label, a, button {
+    color: white;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -42,6 +47,7 @@ label {
 }
 
 input {
+    color: white;
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
