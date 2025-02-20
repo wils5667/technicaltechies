@@ -131,6 +131,47 @@ header button:hover {
     transition: 0.3s;
 }
 
-.report-buttons-container button:hover {
-    background-color: #0056b3;
+
+/* Add an item buttons */
+.add-item-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgb(0, 204, 204);
+    max-width: 600px;
+    margin-top: 20px;
+    margin-left: 400px
+}
+.add-item-form {
+    padding: 20px;
+}
+.add-item-form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.add-item-form input, .add-item-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.add-item-form button {
+    background: rgb(0, 204, 204);
+    font-weight: bold;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.add-item-form button:hover {
+    background: rgb(0, 204, 204);
 }
