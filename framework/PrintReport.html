@@ -7,7 +7,7 @@
     
     <title>TT</title>
 </head>
-<body>
+<body class="print-reports-page">
     <div class="sidebar">
         <h2 class="logo">TT</h2>
         <a href="Home.html">Home</a>
@@ -26,11 +26,16 @@
         </header>
     </div>
 
-
-        <div class="report-buttons-container">
-            <button onclick="generateLowStockReport()">Low Stock Report</button>
-            <button onclick="generateStockReport()">Stock Report</button>
-            <button onclick="generateSalesReport()">Most Sold / Least Sold Report</button>
+    <div class="report-buttons-wrapper">
+        <div class="add-item-container">
+            <div class="report-buttons-container">
+                <a href="LowStockReport.html"><button>Low Stock Report</button></a>
+                <a href="StockReport.html"><button>Stock Report</button></a>
+                <a href="MostSoldReport.html"><button>Most Sold / Least Sold Report</button></a>
+            </div>
         </div>
     </div>
+    
+    
+    
 </body>
