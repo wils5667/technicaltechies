@@ -109,6 +109,19 @@ header button:hover {
     color: #444;
 }
 
+.three-dots {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    z-index: 10;
+}
+.three-dots:hover {
+    color: #000;
+}
 /* Print Report Buttons*/
 .report-buttons-container {
     display: flex;
