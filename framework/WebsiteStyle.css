@@ -208,3 +208,41 @@ body.print-reports-page {
     background-attachment: fixed; 
 }
 
+/* Search Buttons*/
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.search-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background: rgb(0, 204, 204);
+    font-weight: bold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background: #008080;
+    color: white;
+}
+
+.search-results {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+}
