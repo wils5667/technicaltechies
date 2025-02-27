@@ -85,6 +85,8 @@ header button:hover {
     border-radius: 8px;  
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    position: relative;
+    padding-right: 40px;
 }
 .item-image {
     width: 150px;
@@ -112,15 +114,15 @@ header button:hover {
 .three-dots {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 10px; 
     font-size: 24px;
     cursor: pointer;
     text-decoration: none;
     color: #333;
-    z-index: 10;
 }
+
 .three-dots:hover {
-    color: #000;
+    color: black;
 }
 /* Add an item buttons */
 .add-item-container {
