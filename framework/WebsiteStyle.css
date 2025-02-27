@@ -246,3 +246,86 @@ body.print-reports-page {
     margin-top: 20px;
     font-size: 18px;
 }
+/* Labels Page */
+.labels-container {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.labels-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.labels-list li {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.label-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.label-button {
+    padding: 10px 20px;
+    background: rgb(0, 204, 204);
+    font-weight: bold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.label-button:hover {
+    background: #008080;
+    color: white;
+}
+
+/* Settings Page */
+.settings-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgb(0, 204, 204);
+}
+
+.settings-container h2 {
+    color: #333;
+}
+
+.settings-dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.settings-button {
+    background: rgb(0, 204, 204);
+    font-weight: bold;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.settings-button:hover {
+    background: #008080;
+    color: white;
+}
