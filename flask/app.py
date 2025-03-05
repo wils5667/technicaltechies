@@ -13,3 +13,12 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/products", methods=['GET'])
+def get_products():
+    products = mongo.db.products.find()
+    product_list = [{
+        "id": str(product["_id"]),
+        "name": str(product["productName"]),
+        "brand": str(product["brand"])
+    } for product in products]
