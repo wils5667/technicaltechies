@@ -1,24 +1,15 @@
-from flask import Flask, render_template, redirect, url_for, session, request
+from flask import Flask, render_template, redirect, url_for, session, request, jsonify
+from flask_pymongo import PyMongo
 
 app = Flask(__name__)
-"""
-@app.before_request
-def initialize_alcohol_items():
-    if 'alcohol_items' not in session:
-        session['alcohol_items'] = [
-            {"name": "Jack Daniel's Old No. 7", "serial": "JD001", "expiration": "2025-12-15", "quantity": 120},
-            {"name": "Jack Daniel's Old No. 7", "serial": "JD001", "expiration": "2025-12-15", "quantity": 120},
-            {"name": "Jack Daniel's Old No. 7", "serial": "JD001", "expiration": "2025-12-15", "quantity": 120}
-        ]
-"""
-        
+
+app.config["MONGO_URI"] = "mongodb+srv://JavierAAS46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
+
+mongo = PyMongo(app)
+
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World</p>"
+def home():
+    return "MongoDB connected successfully"
 
-
-"""
-@app.route('/')
-def base():
-    return render_template('base.html')
-"""
+if __name__ == "__main__":
+    app.run(debug=True)
