@@ -1,4 +1,11 @@
-body {
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+/* Home Page Style*/
+.main-page {
     background-color: #ffffff;
 }
 .sidebar {
@@ -201,7 +208,7 @@ header button:hover {
     color: Black;
 }
 
-body.print-reports-page {
+.print-reports-page {
     background-color: white;
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),  
@@ -248,6 +255,7 @@ body.print-reports-page {
     margin-top: 20px;
     font-size: 18px;
 }
+
 /* Labels Page */
 .labels-container {
     max-width: 600px;
@@ -331,3 +339,118 @@ body.print-reports-page {
     background: #008080;
     color: white;
 }
+/* Login Page */
+.login-page, .create-account-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:#f4f4f4;
+}
+
+.login-container {
+    background:rgb(0,204,204);
+    padding:30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10 rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+/* form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 16px;
+    text-align: left;
+}
+
+input {
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/*Button Styling */
+.login-button, .report-button, .add-item-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.login-button{
+    background-color: black;
+    color: white;
+}
+.login-button:hover{
+    background-color: #0056b3;
+}
+.report-button{
+    background-color: black;
+    color:white;
+}
+.report-button:hover {
+    background-color: rgb(0,204,204);
+    color:black;
+}
+.add-item-button {
+    background: rgb(0, 204, 204);
+    font-weight: bold;
+    color: black;
+}
+
+.add-item-button:hover {
+    background: rgb(0, 204, 204);
+}
+
+
+/* Link styling */
+.link-container {
+    margin-top: 15px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Create An Account */
+/* Name Fields Layout */
+.name-fields {
+    display: flex;
+    gap: 10px;  
+}
+
+.input-group {
+    flex: 1;
+}
+
+/* Header Buttons Styling */
+.header-buttons a button {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.header-buttons a button:hover {
+    background-color: #a8a8a8;
+}
+
