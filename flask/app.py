@@ -11,8 +11,7 @@ db = client["techies_dbs"]
 @app.route('/')
 def home():
     try:
-        client.admin.command('ping')
-        return "Pinged your deployment. You successfully connected to MongoDB!"
+        return db.list_collection_names()
     except Exception as e:
         return e
     
