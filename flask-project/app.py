@@ -5,8 +5,14 @@ app = Flask(__name__)
 uri = "mongodb+srv://javierarroyosolis46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
 
 client = MongoClient(uri)
-db = client.get_database("techies_db")
+db = client["techies_dbs"]
 
 @app.route('/')
 def home():
-    return "Hello, Techies!"
+    try:
+        return db.list_collection_names()
+    except Exception as e:
+        return str(e)
+
+if __name__ == '__main__':
+    app.run(debug=True)
