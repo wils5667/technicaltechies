@@ -3,9 +3,11 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 from datetime import datetime
 
+# Initialize Flask app and MongoDB client
 app = Flask(__name__)
 uri = "mongodb+srv://javierarroyosolis46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
 
+# Connect to MongoDB and the techies_dbs database
 client = MongoClient(uri)
 db = client["techies_dbs"]
 
@@ -53,7 +55,17 @@ def get_all_users():
 # Route for the home page
 @app.route('/')
 def home():
-    return render_template('home.html', products=get_all_products())
+    return render_template('home.html', page_title="HOME", products=get_all_products())
+
+# Route for the add new page
+@app.route('/addnew')
+def addnew():
+    return render_template('addnew.html', page_title="ADD NEW")
+
+# Route for the search page
+@app.route('/search')
+def search():
+    return render_template('search.html', page_title="SEARCH")
 
 if __name__ == '__main__':
     app.run(debug=True)
