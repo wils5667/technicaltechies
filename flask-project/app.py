@@ -62,6 +62,8 @@ def home():
 def addnew():
     return render_template('addnew.html', page_title="ADD NEW")
 
+# Route for the edit page
+
 # Route for the search page
 @app.route('/search')
 def search():
