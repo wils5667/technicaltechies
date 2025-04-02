@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<main class="container">
+    {% for product in products %}
+    <div class="item">
+        <a class="three-dots" href="EditItem.html">&#8942;</a>
+        <img src="https://via.placeholder.com/150" alt="Item 1" class="item-image">
+        <div class="item-info">
+            <h3>Food Name: {{ product.name }}</h3>
+            <h3>Quantity: {{ product.stock }}</h3>
+        </div>
+        <div class="item-extra-info">
+            <h4>Serial Number: {{ product.productID }}</h4>
+            <h4>Expiration Date: {{ product.expiryDate }}</h4>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Search Page{% endblock %}
+
+{% block content %}
+<main>
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search..." class="search-input">
+        <button onclick="performSearch()" class="search-button">Search</button>
+    </div>
+
+    <div id="search-results" class="search-results">
+        <!-- Search results will be displayed here -->
+    </div>
+    <script>
+        function performSearch() {
+            let query = document.getElementById('search-bar').value;
+            if (query.trim() !== "") {
+                document.getElementById('search-results').innerHTML = 
+                    "<p>Showing results for: <strong>" + query + "</strong></p>";
+            } else {
+                document.getElementById('search-results').innerHTML = "<p>Please enter a search term.</p>";
+            }
+        }
+    </script>
+</main>
+{% endblock %}
