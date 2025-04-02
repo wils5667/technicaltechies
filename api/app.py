@@ -70,4 +70,4 @@ def search():
     return render_template('search.html', page_title="SEARCH")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
