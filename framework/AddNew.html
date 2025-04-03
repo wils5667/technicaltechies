@@ -24,9 +24,9 @@
             </div>
         </header>
         <div class="add-item-container">
-            <form class="add-item-form" action="Home.html" method="get">
-                <label for="itme-name">Name:</label>
-                <input type="text" id="itme-name" name="itme-name" required>
+            <form class="add-item-form" action="/addnew" method="post">
+                <label for="item-name">Name:</label>
+                <input type="text" id="itme-name" name="item-name" required>
 
                 <label for="brand">Brand:</label>
                 <input type="text" id="brand" name="brand" required>
@@ -50,7 +50,7 @@
                 <input type="number" id="item-quantity" name="item-quantity" required>
 
                 <label for="item-expiration">Expiration Date:</label>
-                <textarea id="item-expiration" name="item-expiration" rows="1" required></textarea>
+                <input type="date" id="item-expiration" name="item-expiration" required>
                 
                 <label for="reorder-level">Reorder Level:</label>
                 <input type="number" id ="reorder-level" name="reorder-level" required>

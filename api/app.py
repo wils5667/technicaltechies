@@ -58,14 +58,62 @@ def home():
     return render_template('home.html', page_title="HOME", products=get_all_products())
 
 # Route for the add new page
-@app.route('/addnew')
+@app.route('/addnew', methods=['GET', 'POST'])
 def addnew():
+    if request.method == 'POST':
+        product = {
+            "item-name": request.form.get("item-name"),
+            "brand": request.form.get("brand"),
+            "category": request.form.get("category"),
+            "serial-number": request.form.get("serial-number"),
+            "volume": float(request.form.get("volume")),
+            "cost-price": float(request.form.get("cost-price")),
+            "selling-price": float(request.form.get("selling-price")),
+            "stock": int(request.form.get("stock")),
+            "item-expiration": datetime.strptime(request.form.get("item-expiration"), "%Y-%m-%d"),
+            "reorder-level": int(request.form.get("reorder-level")),
+            "sales-count": int(request.form.get("sales-count")),
+            "total-revenue": float(request.form.get("total-revenue")),
+        }
+
+        # send to mongo
+        db["products"].insert_one(product)
+
+        # go back to home page
+        return redirect(url_for('home'))
     return render_template('addnew.html', page_title="ADD NEW")
 
 # Route for the edit page
-@app.route('/edititem')
+@app.route('/edititem', methods=['GET', 'POST'])
 def edititem():
-    return render_template('edititem.html', page_title="EDIT ITEM")
+    item_id = request.args.get('id')
+    if not item_id:
+        return "Missing item ID", 400
+
+    if request.method == 'POST':
+        updated_data = {
+            "item-name": request.form.get("item-name"),
+            "brand": request.form.get("brand"),
+            "category": request.form.get("category"),
+            "serial-number": request.form.get("serial-number"),
+            "volume": float(request.form.get("volume")),
+            "cost-price": float(request.form.get("cost-price")),
+            "selling-price": float(request.form.get("selling-price")),
+            "stock": int(request.form.get("stock")),
+            "item-expiration": datetime.strptime(request.form.get("item-expiration"), "%Y-%m-%d"),
+            "reorder-level": int(request.form.get("reorder-level")),
+            "sales-count": int(request.form.get("sales-count")),
+            "total-revenue": float(request.form.get("total-revenue")),
+        }
+        db["products"].update_one({"_id": ObjectId(item_id)}, {"$set": updated_data})
+        return redirect(url_for('home'))
+    product = db["products"].find_one({"_id": ObjectId(item_id)})
+    if product:
+        if isinstance(product.get("item-expiration"), datetime):
+            product["item-expiration"] = product["item-expiration"].strftime("%Y-%m-%d")
+        return render_template('edititem.html', page_title="EDIT ITEM", product=product)
+
+    return "Product not found", 404
 
 # Route for the search page
 @app.route('/search')
