@@ -82,6 +82,12 @@ def lables():
 def settings():
     return render_template('settings.html', page_title="SETTINGS")
 
+# Route for the print reports options page
+'''
+@app.route('/printreports')
+def printreports():
+    return render_template('printreports.html', page_title="PRINT REPORTS")
+'''
 
 if __name__ == '__main__':
     app.run(debug=False)
