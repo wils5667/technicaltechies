@@ -86,9 +86,9 @@ def addnew():
 # Route for the edit page
 @app.route('/edititem', methods=['GET', 'POST'])
 def edititem():
-    item_id = request.args.get('serial-number')
-    if not item_id:
-        return "Missing item ID", 400
+    #item_id = request.args.get('serial-number')
+    #if not item_id:
+    #    return "Missing item ID", 400
 
     if request.method == 'POST':
         try:
@@ -120,7 +120,7 @@ def edititem():
             product["item-expiration"] = product["item-expiration"].strftime("%Y-%m-%d")
         return render_template('edititem.html', page_title="EDIT ITEM", product=product)
 
-    return "Product not found", 404
+   # return "Product not found", 404
 
 # Route for the search page
 @app.route('/search')
