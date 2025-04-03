@@ -108,7 +108,7 @@ def edititem():
             }
             db["products"].update_one({"_id": ObjectId(item_id)}, {"$set": updated_data})
 
-            return redirect(url_for('home'))
+            return redirect('Home.html')
 
         except Exception as e:
             print("Error in POST /edititem:", str(e))
@@ -118,7 +118,7 @@ def edititem():
     if product:
         if isinstance(product.get("item-expiration"), datetime):
             product["item-expiration"] = product["item-expiration"].strftime("%Y-%m-%d")
-        return render_template('edititem.html', page_title="EDIT ITEM", product=product)
+    return render_template('edititem.html', page_title="EDIT ITEM", product=product)
 
    # return "Product not found", 404
 
