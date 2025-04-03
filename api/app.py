@@ -108,7 +108,7 @@ def edititem():
             }
             db["products"].update_one({"_id": ObjectId(item_id)}, {"$set": updated_data})
 
-            return redirect('Home.html')
+            return redirect(url_for('home'))
 
         except Exception as e:
             print("Error in POST /edititem:", str(e))
@@ -138,11 +138,9 @@ def settings():
     return render_template('settings.html', page_title="SETTINGS")
 
 # Route for the print reports options page
-'''
 @app.route('/printreports')
 def printreports():
     return render_template('printreports.html', page_title="PRINT REPORTS")
-'''
 
 if __name__ == '__main__':
     app.run(debug=False)
