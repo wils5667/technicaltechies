@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Lables Page{% endblock %}
+
+{% block content %}
+<main>
+    <div class="labels-container">
+        <ul id="labels-list" class="labels-list">
+            <li>Label 1</li>
+            <li>Label 2</li>
+            <li>Label 3</li>
+        </ul>
+        <input type="text" id="new-label" placeholder="Add new label" class="label-input">
+        <button onclick="addLabel()" class="label-button">Add</button>
+    </div>
+    <script>
+        function addLabel() {
+            let newLabel = document.getElementById('new-label').value;
+            if (newLabel.trim() !== "") {
+                let listItem = document.createElement("li");
+                listItem.textContent = newLabel;
+                document.getElementById("labels-list").appendChild(listItem);
+                document.getElementById("new-label").value = "";
+            }
+        }
+    </script>
+</main>
+{% endblock %}

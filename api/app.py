@@ -63,11 +63,25 @@ def addnew():
     return render_template('addnew.html', page_title="ADD NEW")
 
 # Route for the edit page
+@app.route('/edititem')
+def edititem():
+    return render_template('edititem.html', page_title="EDIT ITEM")
 
 # Route for the search page
 @app.route('/search')
 def search():
     return render_template('search.html', page_title="SEARCH")
+
+# Route for the lables page
+@app.route('/lables')
+def lables():
+    return render_template('lables.html', page_title="LABLES")
+
+# Route for the settings page
+@app.route('/settings')
+def settings():
+    return render_template('settings.html', page_title="SETTINGS")
+
 
 if __name__ == '__main__':
     app.run(debug=False)
