@@ -80,13 +80,13 @@ def addnew():
         db["products"].insert_one(product)
 
         # go back to home page
-        return redirect(url_for('home'))
+        return redirect('Home.html')
     return render_template('addnew.html', page_title="ADD NEW")
 
 # Route for the edit page
 @app.route('/edititem', methods=['GET', 'POST'])
 def edititem():
-    item_id = request.args.get('id')
+    item_id = request.args.get('serial-number')
     if not item_id:
         return "Missing item ID", 400
 
