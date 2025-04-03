@@ -61,67 +61,16 @@ def home():
 @app.route('/addnew', methods=['GET', 'POST'])
 def addnew():
     if request.method == 'POST':
-        product = {
-            "item-name": request.form.get("item-name"),
-            "brand": request.form.get("brand"),
-            "category": request.form.get("category"),
-            "serial-number": request.form.get("serial-number"),
-            "volume": float(request.form.get("volume")),
-            "cost-price": float(request.form.get("cost-price")),
-            "selling-price": float(request.form.get("selling-price")),
-            "stock": int(request.form.get("stock")),
-            "item-expiration": datetime.strptime(request.form.get("item-expiration"), "%Y-%m-%d"),
-            "reorder-level": int(request.form.get("reorder-level")),
-            "sales-count": int(request.form.get("sales-count")),
-            "total-revenue": float(request.form.get("total-revenue")),
-        }
-
-        # send to mongo
-        db["products"].insert_one(product)
-
-        # go back to home page
-        return redirect('Home.html')
+        # handle form submission
+        return redirect(url_for('home'))
     return render_template('addnew.html', page_title="ADD NEW")
 
 # Route for the edit page
 @app.route('/edititem', methods=['GET', 'POST'])
 def edititem():
-    #item_id = request.args.get('serial-number')
-    #if not item_id:
-    #    return "Missing item ID", 400
-
-    if request.method == 'POST':
-        try:
-            updated_data = {
-                "item-name": request.form.get("item-name"),
-                "brand": request.form.get("brand"),
-                "category": request.form.get("category"),
-                "serial-number": request.form.get("serial-number"),
-                "volume": float(request.form.get("volume", "0")),
-                "cost-price": float(request.form.get("cost-price", "0")),
-                "selling-price": float(request.form.get("selling-price", "0")),
-                "stock": int(request.form.get("stock", "0")),
-                "item-expiration": datetime.strptime(request.form.get("item-expiration", ""), "%Y-%m-%d"),
-                "reorder-level": int(request.form.get("reorder-level", "0")),
-                "sales-count": int(request.form.get("sales-count", "0")),
-                "total-revenue": float(request.form.get("total-revenue", "0")),
-            }
-            db["products"].update_one({"_id": ObjectId(item_id)}, {"$set": updated_data})
-
-            return redirect(url_for('home'))
-
-        except Exception as e:
-            print("Error in POST /edititem:", str(e))
-            return f"Something went wrong: {e}", 500
-
-    product = db["products"].find_one({"_id": ObjectId(item_id)})
-    if product:
-        if isinstance(product.get("item-expiration"), datetime):
-            product["item-expiration"] = product["item-expiration"].strftime("%Y-%m-%d")
+    item_id = request.args.get('item_id')
+    # process item_id
     return render_template('edititem.html', page_title="EDIT ITEM", product=product)
-
-   # return "Product not found", 404
-
 # Route for the search page
 @app.route('/search')
 def search():
