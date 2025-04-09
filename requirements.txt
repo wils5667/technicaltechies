@@ -2,3 +2,6 @@ flask
 pymongo
 flask-pymongo
 gunicorn
+flask-bcrypt
+flask-jwt-extended
+python-dotenv
