@@ -79,7 +79,7 @@ def search():
 # Route for the lables page
 @app.route('/lables')
 def lables():
-    return render_template('lables.html', page_title="LABLES")
+    return render_template('lables.html', page_title="LABELS")
 
 # Route for the settings page
 @app.route('/settings')
