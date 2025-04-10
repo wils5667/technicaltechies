@@ -71,6 +71,7 @@ def edititem():
     item_id = request.args.get('item_id')
     # process item_id
     return render_template('edititem.html', page_title="EDIT ITEM", product=product)
+    
 # Route for the search page
 @app.route('/search')
 def search():
