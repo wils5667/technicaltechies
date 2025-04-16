@@ -1,13 +1,28 @@
+#Core flask and DB Imports
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from pymongo import MongoClient
 from bson.json_util import dumps
 from datetime import datetime
+#Login/authentication setup
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+from dotenv import load_dotenv
+import os
+from flask import session
+from database import users_collection
 
 # Initialize Flask app and MongoDB client
 app = Flask(__name__)
-uri = "mongodb+srv://javierarroyosolis46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
+
+#secret keys
+load_dotenv()
+app.secret_key = os.getenv("SECRET_KEY")
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
+bcrypt = Bcrypt(app)
+jwt = JWTManager(app)
 
 # Connect to MongoDB and the techies_dbs database
+uri = "mongodb+srv://javierarroyosolis46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
 client = MongoClient(uri)
 db = client["techies_dbs"]
 
@@ -90,6 +105,54 @@ def settings():
 @app.route('/printreports')
 def printreports():
     return render_template('printreports.html', page_title="PRINT REPORTS")
+
+#Registration route
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        # Prevent duplicate accounts
+        if users_collection.find_one({"accountID": username}):
+            return "Username already exists", 400
+
+        hashed_pw = bcrypt.generate_password_hash(password).decode("utf-8")
+        users_collection.insert_one({
+            "accountID": username,
+            "password": hashed_pw
+        })
+
+        return redirect(url_for("login"))
+    return render_template("Createaccount.html")
+
+#Login Route
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        try:
+            username = request.form["username"]
+            password = request.form["password"]
+        except KeyError:
+            return "Missing form fields", 400
+
+        user = users_collection.find_one({"accountID": username})
+
+        if user and bcrypt.check_password_hash(user["password"], password):
+            session["user"] = username
+            return redirect(url_for("dashboard"))
+
+        return "Invalid credentials", 401
+        
+    return render_template("login.html")
+
+
+#Dashboard 
+@app.route("/dashboard")
+def dashboard():
+    if "user" in session:
+        return f"Welcome, {session['user']}!"
+    return redirect(url_for("login"))
 
 if __name__ == '__main__':
     app.run(debug=False)
