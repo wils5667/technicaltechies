@@ -63,7 +63,7 @@ def addnew():
     if request.method == 'POST':
         # handle form submission
         return redirect(url_for('home'))
-    return render_template('addnew.html', page_title="ADD NEW")
+    return render_template('addNew.html', page_title="ADD NEW")
 
 # Route for the edit page
 @app.route('/edititem', methods=['GET', 'POST'])
@@ -93,4 +93,4 @@ def printreports():
     return render_template('printreports.html', page_title="PRINT REPORTS")
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
