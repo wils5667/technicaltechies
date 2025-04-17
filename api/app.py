@@ -15,7 +15,6 @@ from database import users_collection
 app = Flask(__name__)
 
 #secret keys
-load_dotenv()
 app.secret_key = os.getenv("SECRET_KEY")
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 bcrypt = Bcrypt(app)
@@ -26,14 +25,11 @@ load_dotenv()
 
 # Grab MongoDB URI
 uri = os.getenv("MONGO_URI")
+print("MONGO_URI:", uri)
 client = MongoClient(uri)
 
 db = client["techies_dbs"]
 users_collection = db["users"]
-# Connect to MongoDB and the techies_dbs database
-#uri = "mongodb+srv://javierarroyosolis46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
-#client = MongoClient(uri)
-#db = client["techies_dbs"]
 
 # Function to retrieve all products from the products collection
 def get_all_products():
@@ -146,6 +142,7 @@ def login():
             return "Missing form fields", 400
 
         user = users_collection.find_one({"accountID": username})
+        print("User from DB:", user) 
 
         if user and user["password"] == password:
             session["user"] = username
