@@ -142,7 +142,7 @@ def login():
             return "Missing form fields", 400
 
         user = users_collection.find_one({"accountID": username})
-        print("User from DB:", user) 
+        #print("User from DB:", user) 
 
         if user and user["password"] == password:
             session["user"] = username
@@ -157,7 +157,7 @@ def login():
 @app.route("/dashboard")
 def dashboard():
     if "user" in session:
-        return f"Welcome, {session['user']}!"
+        return render_template('home.html', page_title="HOME")
     return redirect(url_for("login"))
 
 if __name__ == '__main__':
