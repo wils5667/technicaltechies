@@ -21,10 +21,19 @@ app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-# Connect to MongoDB and the techies_dbs database
-uri = "mongodb+srv://javierarroyosolis46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
+# Load .env file
+load_dotenv()
+
+# Grab MongoDB URI
+uri = os.getenv("MONGO_URI")
 client = MongoClient(uri)
+
 db = client["techies_dbs"]
+users_collection = db["users"]
+# Connect to MongoDB and the techies_dbs database
+#uri = "mongodb+srv://javierarroyosolis46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
+#client = MongoClient(uri)
+#db = client["techies_dbs"]
 
 # Function to retrieve all products from the products collection
 def get_all_products():
@@ -138,7 +147,7 @@ def login():
 
         user = users_collection.find_one({"accountID": username})
 
-        if user and bcrypt.check_password_hash(user["password"], password):
+        if user and user["password"] == password:
             session["user"] = username
             return redirect(url_for("dashboard"))
 
