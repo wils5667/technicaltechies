@@ -152,7 +152,10 @@ def login():
         
     return render_template("login.html")
 
-
+#Dashboard is repetive in the sense that home is defined
+#on line 75 but we need to make it so that the user has to be 
+#login before seeing home, also I am missing the area where 
+#the alcohol information is displayed from the database and CSS 
 #Dashboard 
 @app.route("/dashboard")
 def dashboard():
