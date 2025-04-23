@@ -8,10 +8,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get MongoDB URI from .env
-MONGO_URI = os.getenv("MONGO_URI")
+MONGO_URI = os.getenv("MONGODB_URI")
 
 # Connect to MongoDB
-client = MongoClient(MONGO_URI)
+client = MongoClient(MONGODB_URI)
 
 # Use the actual database name: techies_dbs
 db = client["techies_dbs"]

@@ -24,8 +24,8 @@ jwt = JWTManager(app)
 load_dotenv()
 
 # Grab MongoDB URI
-uri = os.getenv("MONGO_URI")
-print("MONGO_URI:", uri)
+uri = os.getenv("MONGODB_URI")
+print("MONGODB_URI:", uri)
 client = MongoClient(uri)
 
 db = client["techies_dbs"]
@@ -75,6 +75,8 @@ def get_all_users():
 # Route for the home page
 @app.route('/')
 def home():
+    if "user" not in session:
+        return redirect('login.html')
     return render_template('home.html', page_title="HOME", products=get_all_products())
 
 # Route for the add new page
