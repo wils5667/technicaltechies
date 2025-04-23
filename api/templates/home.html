@@ -9,12 +9,10 @@
         <a class="three-dots" href="{{ url_for('edititem') }}">&#8942;</a>
         <img src="{{ url_for('static', filename='images/alcohol_PH.jpg') }}" alt="Item 1" class="item-image">
         <div class="item-info">
-            <h3>Food Name: {{ product.name }}</h3>
-            <h3>Quantity: {{ product.stock }}</h3>
-        </div>
-        <div class="item-extra-info">
-            <h4>Serial Number: {{ product.productID }}</h4>
-            <h4>Expiration Date: {{ product.expiryDate }}</h4>
+            <p><strong>Food Name:</strong> {{ product.name }}</p>
+            <p><strong>Quantity:</strong> {{ product.stock }}</p>
+            <p><strong>Serial Number:</strong> {{ product.productID }}</p>
+            <p><strong>Expiration Date:</strong> {{ product.expiryDate }}</p>
         </div>
     </div>
     {% endfor %}

@@ -102,21 +102,17 @@ header button:hover {
     border-radius: 8px; 
     margin-right: 20px; 
 }
-.item-info h3 {
+
+.item-info {
     font-size: 20px;
     margin-bottom: 8px;
     color: #333;
-}
-.item-extra-info {
-    flex: 1;
-    padding-left: 700px; 
+    justify-content: space-between;
 }
 
-.item-extra-info h4 {
-    font-size: 20px;
-    margin-bottom: 8px;
-    color: #444;
-}
+.item-info p {
+    margin: 0.25rem 0; 
+} 
 
 .three-dots {
     position: absolute;
@@ -131,6 +127,7 @@ header button:hover {
 .three-dots:hover {
     color: black;
 }
+
 /* Add an item buttons */
 .add-item-container {
     background: white;

@@ -95,4 +95,4 @@ def printreports():
     return render_template('printreports.html', page_title="PRINT REPORTS")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
