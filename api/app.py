@@ -9,7 +9,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from dotenv import load_dotenv
 import os
 from flask import session
-from database import users_collection
+from .database import users_collection
 
 # Initialize Flask app and MongoDB client
 app = Flask(__name__)
@@ -76,7 +76,7 @@ def get_all_users():
 @app.route('/')
 def home():
     if "user" not in session:
-        return redirect('login.html')
+        return redirect(url_for('login'))
     return render_template('home.html', page_title="HOME", products=get_all_products())
 
 # Route for the add new page
@@ -148,7 +148,7 @@ def login():
 
         if user and user["password"] == password:
             session["user"] = username
-            return redirect(url_for("dashboard"))
+            return redirect(url_for("home"))
 
         return "Invalid credentials", 401
         
@@ -158,12 +158,6 @@ def login():
 #on line 75 but we need to make it so that the user has to be 
 #login before seeing home, also I am missing the area where 
 #the alcohol information is displayed from the database and CSS 
-#Dashboard 
-@app.route("/dashboard")
-def dashboard():
-    if "user" in session:
-        return render_template('home.html', page_title="HOME")
-    return redirect(url_for("login"))
 
 if __name__ == '__main__':
     app.run(debug=False)
