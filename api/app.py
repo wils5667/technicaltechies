@@ -63,6 +63,8 @@ def addnew():
     if request.method == 'POST':
         # handle form submission
         return redirect(url_for('home'))
+    
+    
     return render_template('addNew.html', page_title="ADD NEW")
 
 # Route for the edit page

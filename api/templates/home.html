@@ -7,7 +7,7 @@
     {% for product in products %}
     <div class="item">
         <a class="three-dots" href="{{ url_for('edititem') }}">&#8942;</a>
-        <img src="https://via.placeholder.com/150" alt="Item 1" class="item-image">
+        <img src="{{ url_for('static', filename='images/alcohol_PH.jpg') }}" alt="Item 1" class="item-image">
         <div class="item-info">
             <h3>Food Name: {{ product.name }}</h3>
             <h3>Quantity: {{ product.stock }}</h3>
