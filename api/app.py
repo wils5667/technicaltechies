@@ -11,6 +11,8 @@ import os
 from flask import session
 from .database import users_collection
 
+#load .env
+load_dotenv()
 # Initialize Flask app and MongoDB client
 app = Flask(__name__)
 
@@ -20,12 +22,9 @@ app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-# Load .env file
-load_dotenv()
 
 # Grab MongoDB URI
 uri = os.getenv("MONGODB_URI")
-print("MONGODB_URI:", uri)
 client = MongoClient(uri)
 
 db = client["techies_dbs"]
