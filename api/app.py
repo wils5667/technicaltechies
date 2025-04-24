@@ -61,6 +61,38 @@ def home():
 @app.route('/addnew', methods=['GET', 'POST'])
 def addnew():
     if request.method == 'POST':
+        name = request.form.get('item-name')
+        brand = request.form.get('brand')
+        category = request.form.get('category')
+        serial = request.form.get('serial-number')
+        volume = float(request.form.get('volume', 0))
+        cost = float(request.form.get('cost-price', 0))
+        selling = float(request.form.get('selling-price', 0))
+        expiry = request.form.get('item-expiration')
+        reorder = int(request.form.get('reorder-level', 0))
+        sales = int(request.form.get('sales-count', 0))
+        stock = int(request.form.get('stock', 0))
+        revenue = float(request.form.get('total-revenue', 0))
+
+        expiry_date = datetime.strptime(expiry, "%Y-%m-%d") if expiry else None
+
+        new_product = {
+            "productName": name,
+            "brand": brand,
+            "category": category,
+            "productID": serial,
+            "volume": volume,
+            "costPrice": cost,
+            "sellingPrice": selling,
+            "expirationDate": expiry_date,
+            "reorderLevel": reorder,
+            "salesCount": sales,
+            "stock": stock,
+            "totalRevenue": revenue
+        }
+
+        db["products"].insert_one(new_product)
+
         # handle form submission
         return redirect(url_for('home'))
     
