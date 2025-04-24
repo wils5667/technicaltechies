@@ -143,7 +143,7 @@ def login():
             return "Missing form fields", 400
 
         user = users_collection.find_one({"accountID": username})
-        #print("User from DB:", user) 
+        print("User from DB:", user) 
 
         if user and user["password"] == password:
             session["user"] = username
@@ -153,10 +153,20 @@ def login():
         
     return render_template("login.html")
 
+<<<<<<< HEAD
 #Dashboard is repetive in the sense that home is defined
 #on line 75 but we need to make it so that the user has to be 
 #login before seeing home, also I am missing the area where 
 #the alcohol information is displayed from the database and CSS 
+=======
+
+#Dashboard 
+@app.route("/dashboard")
+def dashboard():
+    if "user" in session:
+        return f"Welcome, {session['user']}!"
+    return redirect(url_for("login"))
+>>>>>>> parent of bfaf15f (Update app.py)
 
 if __name__ == '__main__':
     app.run(debug=False)
