@@ -196,5 +196,12 @@ def login():
 #login before seeing home, also I am missing the area where 
 #the alcohol information is displayed from the database and CSS 
 
+#Dashboard 
+@app.route("/dashboard")
+def dashboard():
+    if "user" in session:
+        return f"Welcome, {session['user']}!"
+    return redirect(url_for("login"))
+
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
