@@ -82,7 +82,6 @@ def home():
 @app.route('/addnew', methods=['GET', 'POST'])
 def addnew():
     if request.method == 'POST':
-        # Get form data given by the user
         name = request.form.get('item-name')
         brand = request.form.get('brand')
         category = request.form.get('category')
@@ -96,10 +95,8 @@ def addnew():
         stock = int(request.form.get('stock', 0))
         revenue = float(request.form.get('total-revenue', 0))
 
-        # Convert the expiry date to a datetime object if provided
         expiry_date = datetime.strptime(expiry, "%Y-%m-%d") if expiry else None
 
-        # Create a new product dictionary to insert into the database
         new_product = {
             "productName": name,
             "brand": brand,
@@ -115,11 +112,12 @@ def addnew():
             "totalRevenue": revenue
         }
 
-        # Insert the new product into the products collection
         db["products"].insert_one(new_product)
 
-        # Handle form submission
+        # handle form submission
         return redirect(url_for('home'))
+    
+    
     return render_template('addNew.html', page_title="ADD NEW")
 
 # Route for the edit page
