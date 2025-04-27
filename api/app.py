@@ -27,7 +27,6 @@ jwt = JWTManager(app)
 # Grab MongoDB URI
 uri = os.getenv("MONGODB_URI")
 client = MongoClient(uri)
-
 db = client["techies_dbs"]
 users_collection = db["users"]
 
@@ -189,19 +188,9 @@ def login():
 
         return "Invalid credentials", 401
         
-    return render_template("login.html")
+    return redirect(url_for('login'))
 
-#Dashboard is repetive in the sense that home is defined
-#on line 75 but we need to make it so that the user has to be 
-#login before seeing home, also I am missing the area where 
-#the alcohol information is displayed from the database and CSS 
 
-#Dashboard 
-@app.route("/dashboard")
-def dashboard():
-    if "user" in session:
-        return f"Welcome, {session['user']}!"
-    return redirect(url_for("login"))
 
 if __name__ == '__main__':
     app.run(debug=True)
