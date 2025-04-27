@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="WebsiteStyle.css">
+   <link rel="stylesheet" href="{{ url_for('static', filename='styles/stylesheet.css') }}">
    <title>TT</title>
    </head>
     <body class="login-page">
@@ -11,18 +11,18 @@
         <div class="login-container">
             <h2>Login</h2>
      
-            <form>
+            <form method="POST" action="{{ url_for('login') }}">
                 <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter Username" required>
-     
+                <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password" required>
-     
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                
                 <button type="submit" class="login-button">Submit</button>
             </form>
      
             <div class="link-container">
-                <a href="Createaccount.html">Create an Account</a>
+                <a href="{{ url_for('register') }}">Create an Account</a>
             </div>
         </div>
     </body>

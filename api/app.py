@@ -1,15 +1,34 @@
+#Core flask and DB Imports
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from pymongo import MongoClient
 from bson.json_util import dumps
 from datetime import datetime
+#Login/authentication setup
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+from dotenv import load_dotenv
+import os
+from flask import session
+from .database import users_collection
 
+#load .env
+load_dotenv()
 # Initialize Flask app and MongoDB client
 app = Flask(__name__)
-uri = "mongodb+srv://javierarroyosolis46:Lostmy-63313113@techiescluster.0zyk4.mongodb.net/?retryWrites=true&w=majority&appName=TechiesCluster"
 
-# Connect to MongoDB and the techies_dbs database
+#secret keys
+app.secret_key = os.getenv("SECRET_KEY")
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
+bcrypt = Bcrypt(app)
+jwt = JWTManager(app)
+
+
+# Grab MongoDB URI
+uri = os.getenv("MONGODB_URI")
 client = MongoClient(uri)
+
 db = client["techies_dbs"]
+users_collection = db["users"]
 
 # Function to retrieve all products from the products collection
 def get_all_products():
@@ -55,6 +74,8 @@ def get_all_users():
 # Route for the home page
 @app.route('/')
 def home():
+    if "user" not in session:
+        return redirect(url_for('login'))
     return render_template('home.html', page_title="HOME", products=get_all_products())
 
 # Route for the add new page
@@ -127,6 +148,62 @@ def settings():
 @app.route('/printreports')
 def printreports():
     return render_template('printreports.html', page_title="PRINT REPORTS")
+
+#Registration route
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        # Prevent duplicate accounts
+        if users_collection.find_one({"accountID": username}):
+            return "Username already exists", 400
+
+        hashed_pw = bcrypt.generate_password_hash(password).decode("utf-8")
+        users_collection.insert_one({
+            "accountID": username,
+            "password": hashed_pw
+        })
+
+        return redirect(url_for("login"))
+    return render_template("Createaccount.html")
+
+#Login Route
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        try:
+            username = request.form["username"]
+            password = request.form["password"]
+        except KeyError:
+            return "Missing form fields", 400
+
+        user = users_collection.find_one({"accountID": username})
+        print("User from DB:", user) 
+
+        if user and user["password"] == password:
+            session["user"] = username
+            return redirect(url_for("home"))
+
+        return "Invalid credentials", 401
+        
+    return render_template("login.html")
+
+<<<<<<< HEAD
+#Dashboard is repetive in the sense that home is defined
+#on line 75 but we need to make it so that the user has to be 
+#login before seeing home, also I am missing the area where 
+#the alcohol information is displayed from the database and CSS 
+=======
+
+#Dashboard 
+@app.route("/dashboard")
+def dashboard():
+    if "user" in session:
+        return f"Welcome, {session['user']}!"
+    return redirect(url_for("login"))
+>>>>>>> parent of bfaf15f (Update app.py)
 
 if __name__ == '__main__':
     app.run(debug=False)
