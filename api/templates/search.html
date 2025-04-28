@@ -1,9 +1,29 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="WebsiteStyle.css">
+    <title>TT</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2 class="logo">TT</h2>
+        <a href="Home.html">Home</a>
+        <a href="Search.html">Search</a>
+        <a href="Lables.html">Labels</a>
+        <a href="Settings.html">Settings</a>
+    </div>
 
-{% block title %}Search Page{% endblock %}
-
-{% block content %}
-<main>
+    <div class="main-content">
+        <header>
+            <h1>SEARCH</h1>
+            <div class=" header-buttons">
+                <a href="PrintReport.html"><button>Print Report</button></a>
+                <a href="AddNew.html"><button>+ Add New </button></a>
+            </div>
+        </header>
+    </div>
     <div class="search-container">
         <input type="text" id="search-bar" placeholder="Search..." class="search-input">
         <button onclick="performSearch()" class="search-button">Search</button>
@@ -12,16 +32,17 @@
     <div id="search-results" class="search-results">
         <!-- Search results will be displayed here -->
     </div>
-    <script>
-        function performSearch() {
-            let query = document.getElementById('search-bar').value;
-            if (query.trim() !== "") {
-                document.getElementById('search-results').innerHTML = 
-                    "<p>Showing results for: <strong>" + query + "</strong></p>";
-            } else {
-                document.getElementById('search-results').innerHTML = "<p>Please enter a search term.</p>";
-            }
+</div>
+
+<script>
+    function performSearch() {
+        let query = document.getElementById('search-bar').value;
+        if (query.trim() !== "") {
+            document.getElementById('search-results').innerHTML = 
+                "<p>Showing results for: <strong>" + query + "</strong></p>";
+        } else {
+            document.getElementById('search-results').innerHTML = "<p>Please enter a search term.</p>";
         }
-    </script>
-</main>
-{% endblock %}
+    }
+</script>
+</body>

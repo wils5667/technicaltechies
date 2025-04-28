@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<main class="container">
+    {% for product in products %}
+    <div class="item">
+        <a class="three-dots" href="{{ url_for('edititem') }}">&#8942;</a>
+        <img src="{{ url_for('static', filename='images/alcohol_PH.jpg') }}" alt="Item 1" class="item-image">
+        <div class="item-info">
+            <p><strong>Food Name:</strong> {{ product.name }}</p>
+            <p><strong>Quantity:</strong> {{ product.stock }}</p>
+            <p><strong>Serial Number:</strong> {{ product.productID }}</p>
+            <p><strong>Expiration Date:</strong> {{ product.expiryDate }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}
