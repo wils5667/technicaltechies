@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Websitestyle.css') }}">
+    <title>TT</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2 class="logo">TT</h2>
+        <a href="Home.html">Home</a>
+        <a href="Search.html">Search</a>
+        <a href="Lables.html">Labels</a>
+        <a href="Settings.html">Settings</a>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>LABELS</h1>
+            <div class=" header-buttons">
+                <a href="PrintReport.html"><button>Print Report</button></a>
+                <a href="AddNew.html"><button>+ Add New </button></a>
+            </div>
+        </header>
+        <div class="labels-container">
+            <ul id="labels-list" class="labels-list">
+                <li>Label 1</li>
+                <li>Label 2</li>
+                <li>Label 3</li>
+            </ul>
+            <input type="text" id="new-label" placeholder="Add new label" class="label-input">
+            <button onclick="addLabel()" class="label-button">Add</button>
+        </div>
+    </div>
+
+    <script>
+        function addLabel() {
+            let newLabel = document.getElementById('new-label').value;
+            if (newLabel.trim() !== "") {
+                let listItem = document.createElement("li");
+                listItem.textContent = newLabel;
+                document.getElementById("labels-list").appendChild(listItem);
+                document.getElementById("new-label").value = "";
+            }
+        }
+    </script>
+</body>

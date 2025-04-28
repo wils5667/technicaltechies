@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Websitestyle.css') }}">
+    <title>TT</title>
+</head>
+<body class="main-page">
+    <div class="sidebar">
+        <h2 class="logo">TT</h2>
+        <a href="Home.html">Home</a>
+        <a href="Search.html">Search</a>
+        <a href="Lables.html">Labels</a>
+        <a href="Settings.html">Settings</a>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>HOME</h1>
+            <div class=" header-buttons">
+                <a href="PrintReport.html"><button>Print Report</button></a>
+                <a href="AddNew.html"><button>+ Add New</button></a>
+            </div>
+        </header>
+    </div>
+</body>
+<main class="container">
+    <div class="item">
+        <a class="three-dots" href="EditItem.html">&#8942;</a>
+        <img src="https://via.placeholder.com/150" alt="Item 1" class="item-image">
+        <div class="item-info">
+            <h3>Name:</h3>
+            <h3>Quantity:</h3>
+        </div>
+        <div class="item-extra-info">
+            <h4>Serial Number: </h4>
+            <h4>Expiration Date: </h4>
+        </div>
+    </div>
+    <div class="item">
+        <a class="three-dots" href="/edititem?id={{ item.id }}">&#8942;</a>
+        <img src="https://via.placeholder.com/150" alt="Item 2" class="item-image">
+        <div class="item-info">
+            <h3>Name:</h3>
+            <h3>Quantity:</h3>
+        </div>
+        <div class="item-extra-info">
+            <h4>Serial Number: </h4>
+            <h4>Expiration Date: </h4>
+        </div>
+    </div>
+    <div class="item">
+        <a class="three-dots" href="/edititem?id={{ item.id }}">&#8942;</a>
+        <img src="https://via.placeholder.com/150" alt="Item 3" class="item-image">
+        <div class="item-info">
+            <h3>Name:</h3>
+            <h3>Quantity:</h3>
+        </div>
+        <div class="item-extra-info">
+            <h4>Serial Number: </h4>
+            <h4>Expiration Date: </h4>
+        </div>
+    </div>
+</main>
+</html>

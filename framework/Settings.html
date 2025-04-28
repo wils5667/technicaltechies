@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Websitestyle.css') }}">
+    <title>TT</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2 class="logo">TT</h2>
+        <a href="Home.html">Home</a>
+        <a href="Search.html">Search</a>
+        <a href="Lables.html">Labels</a>
+        <a href="Settings.html">Settings</a>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>SETTINGS</h1>
+            <div class=" header-buttons">
+                <a href="PrintReport.html"><button>Print Report</button></a>
+                <a href="AddNew.html"><button>+ Add New </button></a>
+            </div>
+        </header>
+        <div class="main-content">
+            
+            <div class="settings-container">
+                <h2>Notifications</h2>
+                <label>
+                    <input type="checkbox" id="email-notifications" checked>
+                    Enable Email Notifications
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" id="sms-notifications">
+                    Enable SMS Notifications
+                </label>
+                <br>
+    
+                <h2>Low Stock Notification</h2>
+                <label for="low-stock-level">Notify me when stock is below:</label>
+                <input type="number" id="low-stock-level" min="1" value="5" class="stock-input">
+    
+                <button onclick="saveSettings()" class="settings-button">Save Settings</button>
+            </div>
+        </div>
+    
+        <script>
+            function saveSettings() {
+                let emailNotifications = document.getElementById("email-notifications").checked;
+                let smsNotifications = document.getElementById("sms-notifications").checked;
+                let lowStockLevel = document.getElementById("low-stock-level").value;
+    
+                alert("Settings Saved:\nEmail Notifications: " + (emailNotifications ? "On" : "Off") + 
+                      "\nSMS Notifications: " + (smsNotifications ? "On" : "Off") + 
+                      "\nLow Stock Notification Level: " + lowStockLevel);
+            }
+        </script>
+</body>

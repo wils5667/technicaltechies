@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Websitestyle.css') }}">
+    <title>TT</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2 class="logo">TT</h2>
+        <a href="Home.html">Home</a>
+        <a href="Search.html">Search</a>
+        <a href="Lables.html">Labels</a>
+        <a href="Settings.html">Settings</a>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>ADD NEW ITEM</h1>
+            <div class=" header-buttons">
+                <a href="PrintReport.html"><button>Print Report</button></a>
+                <a href="AddNew.html"><button>+ Add New </button></a>
+            </div>
+        </header>
+        <div class="add-item-container">
+            <form class="add-item-form" action="/addnew" method="post">
+                <label for="item-name">Name:</label>
+                <input type="text" id="item-name" name="item-name" required>
+
+                <label for="brand">Brand:</label>
+                <input type="text" id="brand" name="brand" required>
+
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" required>
+                
+                <label for="serial-number">Serial Number:</label>
+                <input type="text" id="serial-number" name="serial-number" required>
+
+                <label for="volume">Volume:</label>
+                <input type="number" id="volume" name="volume" required>
+                
+                <label for="cost-price">Cost Price:</label>
+                <input type="number" id="cost-price" name="cost-price" step="0.01" required>
+
+                <label for="selling-price">Selling Price:</label>
+                <input type="number" id="selling-price" name="selling-price" step="0.01" required>
+                
+                <label for="item-quantity">Quantity:</label>
+                <input type="number" id="item-quantity" name="item-quantity" required>
+
+                <label for="item-expiration">Expiration Date:</label>
+                <input type="date" id="item-expiration" name="item-expiration" required>
+                
+                <label for="reorder-level">Reorder Level:</label>
+                <input type="number" id ="reorder-level" name="reorder-level" required>
+
+                <label for="sales-count">Sales Count:</label>
+                <input type="number" id="sales-count" name="sales-count" required>
+
+                <label for="stock">Stock:</label>
+                <input type="number" id="stock" name="stock" required>
+
+                <label for="total-revenue">Total Revenue:</label>
+                <input type="number" id="total-revenue" name="total-revenue" step="0.01" required>
+                
+                <label for="item-image">Upload Image:</label>
+                <input type="file" id="item-image" name="item-image" accept="image/*">
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
